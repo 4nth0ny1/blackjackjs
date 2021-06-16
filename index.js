@@ -27,12 +27,7 @@ const deal = () => {
     var t = document.createTextNode(randNum);
     x.appendChild(t);
     document.getElementById("myCards").appendChild(x);
-
-    
     document.getElementById("sum").innerHTML = newTotal;
 }
 
 document.querySelector('random-number').addEventListener("click", deal);
-
-
-
