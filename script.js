@@ -1,16 +1,21 @@
-
 const hitButton = document.querySelector('#hit-button')
 const dealButton = document.querySelector('#deal-button')
+const standButton = document.querySelector('#stand-button')
+
 const myCards = document.querySelector('#my-cards')
 const dealerCards = document.querySelector('#dealer-cards')
+
 const playerSum = document.querySelector('#player-sum')
 const dealerSum = document.querySelector('#dealer-sum')
 
 const cardArray = [1,2,3,4,5,6,7,8,9,10,11]
-const dealerCardArray = []
-const myCardArray = []
+let dealerCardArray = []
+let myCardArray = []
 let playerSumTotal = 0
 let dealerSumTotal = 0
+
+dealButton.addEventListener('click', deal)
+standButton.addEventListener('click', stand)
 
 function hitMe() {
     myCardArray.push(cardArray[Math.floor(Math.random() * cardArray.length)])
@@ -23,9 +28,18 @@ function hitMe() {
     }
 
     playerSum.innerHTML = playerSumTotal
+    checkSum(playerSumTotal)
 }
 
 function deal(){
+    dealerCardArray = []
+    myCardArray = []
+    playerSumTotal = 0
+    dealerSumTotal = 0
+
+    playerSum.innerHTML = ""
+    dealerSum.innerHTML = ""
+
     myCardArray.push(cardArray[Math.floor(Math.random() * cardArray.length)])
     myCardArray.push(cardArray[Math.floor(Math.random() * cardArray.length)])
     myCards.innerHTML = myCardArray
@@ -49,9 +63,18 @@ function deal(){
     dealerSum.append(dealerSumTotal)
 }
 
+function checkSum(playerSumTotal, myCardArray){
+    if (playerSumTotal > 21) {
+        console.log('you lose')
+        hitButton.removeEventListener('click', hitMe)
+        standButton.removeEventListener('click', stand)
+        dealButton.addEventListener('click', deal)
+    }
+}
 
+function stand(){
+    console.log('standing')
+    hitButton.removeEventListener('click', hitMe)
+}
 
-
-
-dealButton.addEventListener('click', deal)
 
