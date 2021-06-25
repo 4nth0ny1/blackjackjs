@@ -75,8 +75,10 @@ function checkPlayerSum(playerSumTotal){
 function checkDealerSum(dealerSumTotal){
     if (dealerSumTotal === 17){
         console.log('dealer stands')
+        clearInterval(clock)
     } else if (dealerSumTotal > 21){
         console.log('dealer busts')
+        clearInterval(clock)
     }
 }
 
@@ -87,7 +89,10 @@ function stand(){
 }
 
 function addDealerCards(){
-    setInterval(function(){ 
+   
+    var clock = setInterval (frame, 3000)
+
+    function frame(){ 
         dealerCardArray.push(cardArray[Math.floor(Math.random() * cardArray.length)])
         dealerCards.innerHTML = dealerCardArray
 
@@ -99,7 +104,10 @@ function addDealerCards(){
     
         dealerSum.innerHTML = dealerSumTotal
         checkDealerSum(dealerSumTotal)
-    }, 3000)
+    }
 }
+
+
+
 
 
