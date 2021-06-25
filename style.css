@@ -17,6 +17,7 @@ body {
     width: 300px;
     text-align: center;
     margin-top: 5px;
+    position: relative;
 }
 
 .button-container {
@@ -30,4 +31,11 @@ body {
     color: black;
     margin-top: 5px;
     border-radius: 5px;
+}
+
+.sum-container {
+    text-align: left;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
