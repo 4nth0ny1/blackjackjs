@@ -28,7 +28,7 @@ function hitMe() {
     }
 
     playerSum.innerHTML = playerSumTotal
-    checkSum(playerSumTotal)
+    checkPlayerSum(playerSumTotal)
 }
 
 function deal(){
@@ -63,7 +63,7 @@ function deal(){
     dealerSum.append(dealerSumTotal)
 }
 
-function checkSum(playerSumTotal, myCardArray){
+function checkPlayerSum(playerSumTotal){
     if (playerSumTotal > 21) {
         console.log('you lose')
         hitButton.removeEventListener('click', hitMe)
@@ -72,9 +72,34 @@ function checkSum(playerSumTotal, myCardArray){
     }
 }
 
+function checkDealerSum(dealerSumTotal){
+    if (dealerSumTotal === 17){
+        console.log('dealer stands')
+    } else if (dealerSumTotal > 21){
+        console.log('dealer busts')
+    }
+}
+
 function stand(){
     console.log('standing')
     hitButton.removeEventListener('click', hitMe)
+    addDealerCards()
+}
+
+function addDealerCards(){
+    setInterval(function(){ 
+        dealerCardArray.push(cardArray[Math.floor(Math.random() * cardArray.length)])
+        dealerCards.innerHTML = dealerCardArray
+
+        dealerSumTotal = 0
+
+        for (let i = 0; i < dealerCardArray.length; i++) {
+            dealerSumTotal += dealerCardArray[i]
+        }
+    
+        dealerSum.innerHTML = dealerSumTotal
+        checkDealerSum(dealerSumTotal)
+    }, 3000)
 }
 
 
