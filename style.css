@@ -1,5 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     background: black;
     color: white;
 }
 
+.dealer-container, .my-container {
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 25px;
+    height: 150px;
+    width: 300px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.button-container {
+    width: 300px;
+    text-align: right;
+}
+
+.button {
+    padding: 10px;
+    background: white;
+    color: black;
+    margin-top: 5px;
+    border-radius: 5px;
+}
