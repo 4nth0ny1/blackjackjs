@@ -54,21 +54,7 @@ function hitMe() {
 }
 
 function deal(){
-    dealerCardArray = []
-    myCardArray = []
-    playerSumTotal = 0
-    dealerSumTotal = 0
-
-    playerSum.innerHTML = ""
-    dealerSum.innerHTML = ""
-    dealerStatus.innerHTML = ''
-    playerStatus.innerHTML = ''
-
-    dealerContainer.classList.remove('dealer-winner')
-    dealerContainer.classList.add('dealer-container')
-    playerContainer.classList.remove('player-winner')
-    playerContainer.classList.add('player-container')
-
+    reset()
     
     myCardArray.push(cardArray[Math.floor(Math.random() * cardArray.length)])
     myCardArray.push(cardArray[Math.floor(Math.random() * cardArray.length)])
@@ -161,6 +147,23 @@ function addDealerCards(){
         dealerSum.innerHTML = dealerSumTotal
         checkDealerSum(dealerSumTotal, clock, playerSumTotal)
     }
+}
+
+function reset(){
+    dealerCardArray = []
+    myCardArray = []
+    playerSumTotal = 0
+    dealerSumTotal = 0
+
+    playerSum.innerHTML = ""
+    dealerSum.innerHTML = ""
+    dealerStatus.innerHTML = ''
+    playerStatus.innerHTML = ''
+
+    dealerContainer.classList.remove('dealer-winner')
+    dealerContainer.classList.add('dealer-container')
+    playerContainer.classList.remove('player-winner')
+    playerContainer.classList.add('player-container')
 }
 
 
