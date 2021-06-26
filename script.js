@@ -97,7 +97,7 @@ function checkDealerSum(dealerSumTotal, clock, playerSumTotal){
     dealerStatus.innerHTML = ''
     playerStatus.innerHTML = ''
     if (dealerSumTotal > 16 && dealerSumTotal < 22) {
-        console.log('dealer has to stand')
+        console.log('dealer as to stand')
         dealerStatus.innerHTML = 'dealer must stand'
         if (dealerSumTotal > playerSumTotal) {
             console.log('dealer wins')
