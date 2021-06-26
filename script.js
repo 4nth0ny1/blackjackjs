@@ -8,7 +8,7 @@ const dealerCards = document.querySelector('#dealer-cards')
 const playerSum = document.querySelector('#player-sum')
 const dealerSum = document.querySelector('#dealer-sum')
 
-const cardArray = [1,2,3,4,5,6,7,8,9,10,11]
+const cardArray = [1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,9,9,9,9,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,11,11,11,11]
 let dealerCardArray = []
 let myCardArray = []
 let playerSumTotal = 0
@@ -73,21 +73,31 @@ function checkPlayerSum(playerSumTotal){
 }
 
 function checkDealerSum(dealerSumTotal, clock, playerSumTotal){
-    
-    if (dealerSumTotal < 22 && dealerSumTotal > playerSumTotal) {
-        console.log('dealer wins')
+    if (dealerSumTotal > 16 && dealerSumTotal < 22) {
+        console.log('dealer has to stand')
+        if (dealerSumTotal > playerSumTotal) {
+            console.log('dealer wins')
+            clearInterval(clock)
+            dealButton.addEventListener('click', deal)   
+        } else {
+            console.log('you win!')
+            clearInterval(clock)
+            dealButton.addEventListener('click', deal)   
+        }
+    } else if (dealerSumTotal > 21) {
+        console.log('dealer busts, you win!')
         clearInterval(clock)
-        dealButton.addEventListener('click', deal)
-    } else if (dealerSumTotal === 17){
-        console.log('dealer stands')
-        clearInterval(clock)
-        dealButton.addEventListener('click', deal)
-    } else if (dealerSumTotal > 21){
-        console.log('dealer busts, you win')
-        clearInterval(clock)
-        dealButton.addEventListener('click', deal)
+        dealButton.addEventListener('click', deal)   
+    } else {
+        console.log('deal must hit')
     }
 }
+
+// if dealer has more than 16, the dealer stands 
+// if the dealer has more than 16, less than 22, and more than the player the dealer wins 
+// if the dealer has more than 21 then the dealer loses no matter what the dealer 
+// clearInterval(clock)
+// dealButton.addEventListener('click', deal)
 
 function stand(){
     console.log('standing')
