@@ -9,50 +9,51 @@
     <title>Blackjack Js</title>
 </head>
 <body>
-    <h1>Blackjack Js</h1>
+    <div class="main-container">
+        <h1>Blackjack Js</h1>
 
-    <div class="dealer-container">
-        <p>Dealer</p>
-        <br>
-        <h3 id="dealer-cards"></h3>
-        <br>
-        <p id="dealer-status"></p>
+        <div class="dealer-container">
+            <p>Dealer</p>
+            <br>
+            <h3 id="dealer-cards"></h3>
+            <br>
+            <p id="dealer-status"></p>
 
-        <div class="sum-container">
-            <p>sum</p>
-            <p id="dealer-sum">
+            <div class="sum-container">
+                <p>sum</p>
+                <p id="dealer-sum">
+            </div>
+
+            <div class="win-container">
+                <p>wins</p>
+                <p id="dealer-win-sum">
+            </div>
+        </div>
+        
+        <div class="player-container">
+            <p>You</p>
+            <br>
+            <h3 id="my-cards"></h3>
+            <br>
+            <p id="player-status"></p>
+
+            <div class="sum-container">
+                <p>sum</p>
+                <p id="player-sum"></p>
+            </div>
+
+            <div class="win-container">
+                <p>wins</p>
+                <p id="player-win-sum">
+            </div>
+
         </div>
 
-        <div class="win-container">
-            <p>wins</p>
-            <p id="dealer-win-sum">
+        <div class="button-container">
+            <button class='button' id="hit-button">Hit Me</button>
+            <button class='button' id="stand-button">Stand</button>
+            <button class='button' id="deal-button">Deal</button>
         </div>
     </div>
-    
-    <div class="player-container">
-        <p>You</p>
-        <br>
-        <h3 id="my-cards"></h3>
-        <br>
-        <p id="player-status"></p>
-
-        <div class="sum-container">
-            <p>sum</p>
-            <p id="player-sum"></p>
-        </div>
-
-        <div class="win-container">
-            <p>wins</p>
-            <p id="player-win-sum">
-        </div>
-
-    </div>
-
-    <div class="button-container">
-        <button class='button' id="hit-button">Hit Me</button>
-        <button class='button' id="stand-button">Stand</button>
-        <button class='button' id="deal-button">Deal</button>
-    </div>
-
 </body>
 </html>

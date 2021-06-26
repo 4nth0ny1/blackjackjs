@@ -38,8 +38,7 @@ let dealerCardArray = []
 let myCardArray = []
 let playerSumTotal = 0
 let dealerSumTotal = 0
-let playerWinArray = []
-let dealerWinArray = []
+
 
 dealButton.addEventListener('click', deal)
 standButton.addEventListener('click', stand)
@@ -104,6 +103,10 @@ function checkPlayerSum(playerSumTotal){
 function checkDealerSum(dealerSumTotal, clock, playerSumTotal){
     dealerStatus.innerHTML = ''
     playerStatus.innerHTML = ''
+
+    let dealerWinTotal = 0
+    let dealerWinArray = []
+
     if (dealerSumTotal > 16 && dealerSumTotal < 22) {
         console.log('dealer as to stand')
         dealerStatus.innerHTML = 'dealer must stand'
@@ -112,8 +115,18 @@ function checkDealerSum(dealerSumTotal, clock, playerSumTotal){
             dealerStatus.innerHTML = 'dealer wins'
             dealerContainer.classList.remove('dealer-container')
             dealerContainer.classList.add('dealer-winner')
+           
             clearInterval(clock)
-            dealButton.addEventListener('click', deal)   
+            dealButton.addEventListener('click', deal)  
+            
+            // dealerWinArray.push(1)
+
+            // for (let i = 0; i < dealerWinArray.length; i++) {
+            //     dealerWinTotal += dealerWinArray[i]
+            // }
+        
+            // dealerWinElement.innerHTML = dealerWinTotal
+
         } else {
             console.log('you win!')
             playerStatus.innerHTML = 'you win!'
@@ -134,7 +147,6 @@ function checkDealerSum(dealerSumTotal, clock, playerSumTotal){
         console.log('dealer must hit')
         dealerStatus.innerHTML = 'dealer must hit'
     }
-
 }
 
 function stand(){

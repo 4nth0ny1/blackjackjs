@@ -9,6 +9,11 @@ body {
     color: white;
 }
 
+.main-container {
+    margin: 0 auto;
+    padding: 50px;
+}
+
 .dealer-container, .player-container {
     border: 1px solid white;
     border-radius: 5px;
