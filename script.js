@@ -72,13 +72,20 @@ function checkPlayerSum(playerSumTotal){
     }
 }
 
-function checkDealerSum(dealerSumTotal){
-    if (dealerSumTotal === 17){
+function checkDealerSum(dealerSumTotal, clock, playerSumTotal){
+    
+    if (dealerSumTotal < 22 && dealerSumTotal > playerSumTotal) {
+        console.log('dealer wins')
+        clearInterval(clock)
+        dealButton.addEventListener('click', deal)
+    } else if (dealerSumTotal === 17){
         console.log('dealer stands')
         clearInterval(clock)
+        dealButton.addEventListener('click', deal)
     } else if (dealerSumTotal > 21){
-        console.log('dealer busts')
+        console.log('dealer busts, you win')
         clearInterval(clock)
+        dealButton.addEventListener('click', deal)
     }
 }
 
@@ -103,7 +110,7 @@ function addDealerCards(){
         }
     
         dealerSum.innerHTML = dealerSumTotal
-        checkDealerSum(dealerSumTotal)
+        checkDealerSum(dealerSumTotal, clock, playerSumTotal)
     }
 }
 
