@@ -58,7 +58,6 @@ body {
 }
 
 .sum-container {
-    text-align: left;
     position: absolute;
     padding: 5px;
     border-top: 1px solid white;
@@ -68,4 +67,20 @@ body {
     height: 48px;
     bottom: 0;
     left: 0;
+}
+
+.win-container {
+    position: absolute;
+    padding: 5px;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-top-left-radius: 5px;
+    text-align: center;
+    height: 48px;
+    bottom: 0;
+    right: 0;
+}
+
+.card {
+    border: 1px solid white;
 }

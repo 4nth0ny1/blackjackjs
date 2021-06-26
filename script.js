@@ -8,6 +8,9 @@ const dealerCards = document.querySelector('#dealer-cards')
 const playerContainer = document.querySelector('.player-container')
 const dealerContainer = document.querySelector('.dealer-container')
 
+const playerWinElement = document.querySelector('#player-win-sum')
+const dealerWinElement = document.querySelector('#dealer-win-sum')
+
 const playerStatus = document.querySelector('#player-status')
 const dealerStatus = document.querySelector('#dealer-status')
 
@@ -35,13 +38,16 @@ let dealerCardArray = []
 let myCardArray = []
 let playerSumTotal = 0
 let dealerSumTotal = 0
+let playerWinArray = []
+let dealerWinArray = []
 
 dealButton.addEventListener('click', deal)
 standButton.addEventListener('click', stand)
 
 function hitMe() {
-    myCardArray.push(cardArray[Math.floor(Math.random() * cardArray.length)])
-    myCards.innerHTML = myCardArray
+    let randomCard = Math.floor(Math.random() * cardArray.length)
+    myCardArray.push(cardArray[randomCard])
+    myCards.innerHTML = myCardArray.join(' ')
 
     playerSumTotal = 0
 
@@ -58,12 +64,13 @@ function deal(){
     
     myCardArray.push(cardArray[Math.floor(Math.random() * cardArray.length)])
     myCardArray.push(cardArray[Math.floor(Math.random() * cardArray.length)])
-    myCards.innerHTML = myCardArray
+    myCards.innerHTML = myCardArray.join(' ')
 
     dealerCardArray.push(cardArray[Math.floor(Math.random() * cardArray.length)])
-    dealerCards.innerHTML = dealerCardArray
+    dealerCards.innerHTML = dealerCardArray.join(' ')
 
     dealButton.removeEventListener('click', deal)
+    standButton.addEventListener('click', stand)
     hitButton.addEventListener('click', hitMe)
 
     for (let i = 0; i < myCardArray.length; i++) {
@@ -77,11 +84,17 @@ function deal(){
     }
 
     dealerSum.append(dealerSumTotal)
+
+    checkPlayerSum(playerSumTotal)
 }
 
 function checkPlayerSum(playerSumTotal){
     if (playerSumTotal > 21) {
         console.log('you lose')
+        playerStatus.innerHTML = 'you bust'
+        dealerStatus.innerHTML = 'dealer wins'
+        dealerContainer.classList.remove('dealer-container')
+        dealerContainer.classList.add('dealer-winner')
         hitButton.removeEventListener('click', hitMe)
         standButton.removeEventListener('click', stand)
         dealButton.addEventListener('click', deal)
@@ -121,29 +134,24 @@ function checkDealerSum(dealerSumTotal, clock, playerSumTotal){
         console.log('dealer must hit')
         dealerStatus.innerHTML = 'dealer must hit'
     }
+
 }
 
 function stand(){
-    console.log('standing')
     playerStatus.innerHTML = 'you chose to stand'
     hitButton.removeEventListener('click', hitMe)
     addDealerCards()
 }
 
 function addDealerCards(){
-   
     var clock = setInterval (frame, 3000)
-
     function frame(){ 
         dealerCardArray.push(cardArray[Math.floor(Math.random() * cardArray.length)])
-        dealerCards.innerHTML = dealerCardArray
-
+        dealerCards.innerHTML = dealerCardArray.join(' ')
         dealerSumTotal = 0
-
         for (let i = 0; i < dealerCardArray.length; i++) {
             dealerSumTotal += dealerCardArray[i]
         }
-    
         dealerSum.innerHTML = dealerSumTotal
         checkDealerSum(dealerSumTotal, clock, playerSumTotal)
     }
