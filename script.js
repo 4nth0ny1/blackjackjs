@@ -5,6 +5,9 @@ const standButton = document.querySelector('#stand-button')
 const myCards = document.querySelector('#my-cards')
 const dealerCards = document.querySelector('#dealer-cards')
 
+const playerContainer = document.querySelector('.player-container')
+const dealerContainer = document.querySelector('.dealer-container')
+
 const playerStatus = document.querySelector('#player-status')
 const dealerStatus = document.querySelector('#dealer-status')
 
@@ -61,6 +64,12 @@ function deal(){
     dealerStatus.innerHTML = ''
     playerStatus.innerHTML = ''
 
+    dealerContainer.classList.remove('dealer-winner')
+    dealerContainer.classList.add('dealer-container')
+    playerContainer.classList.remove('player-winner')
+    playerContainer.classList.add('player-container')
+
+    
     myCardArray.push(cardArray[Math.floor(Math.random() * cardArray.length)])
     myCardArray.push(cardArray[Math.floor(Math.random() * cardArray.length)])
     myCards.innerHTML = myCardArray
@@ -102,11 +111,15 @@ function checkDealerSum(dealerSumTotal, clock, playerSumTotal){
         if (dealerSumTotal > playerSumTotal) {
             console.log('dealer wins')
             dealerStatus.innerHTML = 'dealer wins'
+            dealerContainer.classList.remove('dealer-container')
+            dealerContainer.classList.add('dealer-winner')
             clearInterval(clock)
             dealButton.addEventListener('click', deal)   
         } else {
             console.log('you win!')
             playerStatus.innerHTML = 'you win!'
+            playerContainer.classList.remove('player-container')
+            playerContainer.classList.add('player-winner')
             clearInterval(clock)
             dealButton.addEventListener('click', deal)   
         }
@@ -114,6 +127,8 @@ function checkDealerSum(dealerSumTotal, clock, playerSumTotal){
         console.log('dealer busts, you win!')
         dealerStatus.innerHTML = 'dealer busts'
         playerStatus.innerHTML = 'you win!'
+        playerContainer.classList.remove('player-container')
+        playerContainer.classList.add('player-winner')
         clearInterval(clock)
         dealButton.addEventListener('click', deal)   
     } else {
